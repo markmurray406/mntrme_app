@@ -4,6 +4,8 @@ ruby '2.0.0'
 #source: http://ruby.railstutorial.org/chapters/static-pages#top
 
 gem 'rails', '4.0.2'
+# Added thin gem as app was not loading on Heroku, 27-Dec-2013
+gem 'thin'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
