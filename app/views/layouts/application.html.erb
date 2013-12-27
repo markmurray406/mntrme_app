@@ -2,13 +2,16 @@
 <html>
 <head>
   <title>MntrmeApp</title>
+  <%#= These next 3 lines prevents cross-site request forgery (CSRF), a type of malicious web attack. %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<%#= yiled is responsible for inserting the contents of each page into the layout, see Listing 3.26 %>
 <%= yield %>
 
 </body>
 </html>
+
