@@ -29,6 +29,9 @@ MntrmeApp::Application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed. Changed to true 27-Dec-13 as page couldn't show on Heroku
   config.assets.compile = true
 
+  # Heroku requires this to be false. Added this on the 27th Dec 13 as Heroku was not loading app. See http://railsapps.github.io/rails-heroku-tutorial.html
+  config.assets.initialize_on_precompile=false
+
   # Generate digests for assets URLs.
   config.assets.digest = true
 
