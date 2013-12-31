@@ -34,4 +34,15 @@ describe "Static pages" do
       expect(page).to have_content('About Us')
     end
   end
+
+  describe "Contact page" do
+    
+    #This tells the tester what we are testing for
+    it "should have the content 'Contact'" do
+    	#This tells the test (Capybara) to visit the contact page in the static_pags folder
+      visit '/static_pages/contact'
+      #This is the test (Capybara) request
+      expect(page).to have_content('Contact')
+    end
+  end
 end
