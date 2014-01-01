@@ -1,0 +1,19 @@
+<header class="navbar navbar-fixed-top">
+<%#= If you want a dark header use
+<header class="navbar navbar-fixed-top navbar-inverse"> %>
+  <div class="navbar-inner">
+    <div class="container">
+      <%#= Note id: "logo" links to tge logo class in the custom.css.scss file %>
+      <%= link_to "Mntr Me", '#', id: "logo" %>
+          
+      <%#= Links %>
+      <nav>
+        <ul class="nav pull-right">
+          <%= link_to "Home",root_path, id: "logo-nav" %>
+          <%= link_to "Help", help_path, id: "logo-nav"%>
+          <%= link_to "Sign in", '#', id: "logo-nav"%>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

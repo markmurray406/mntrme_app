@@ -2,47 +2,38 @@ require 'spec_helper'
 
 describe "Static pages" do
 
-  describe "Home page" do
+subject { page }
+describe "Home page" do
+  #This tells the test (Capybara) to visit the home page as described in the routes.rb file
+   before { visit root_path }
 
-    #This tells the tester what we are testing for
-    it "should have the content 'Mntr Me'" do
-    	#This tells the test (Capybara) to visit the home page in the static_pags folder
-      visit '/static_pages/home'
-      #This is the test (Capybara) request
-      expect(page).to have_content('Mntr Me')
-    end
-  end
+  #Test 1: Mntr Me is mentioned on the page.
+  it { should have_content('Mntr Me') }
+  #Test 2: Mntr Me shows in the tab of a browser.
+  it { should have_title("Mntr Me") }
+end
 
-  describe "Help page" do
+describe "Help page" do
+  #This tells the test (Capybara) to visit the help page as described in the routes.rb file
+   before { visit help_path }
 
-    #This tells the tester what we are testing for
-    it "should have the content 'Help'" do
-    	#This tells the test (Capybara) to visit the help page in the static_pags folder
-      visit '/static_pages/help'
-      #This is the test (Capybara) request
-      expect(page).to have_content('Help')
-    end
-  end
+  #Test 3: Help is mentioned on the page.
+  it { should have_content('Help') }
+end
 
-  describe "About page" do
-    
-    #This tells the tester what we are testing for
-    it "should have the content 'About Us'" do
-    	#This tells the test (Capybara) to visit the about page in the static_pags folder
-      visit '/static_pages/about'
-      #This is the test (Capybara) request
-      expect(page).to have_content('About Us')
-    end
-  end
+describe "About page" do
+  #This tells the test (Capybara) to visit the about page as described in the routes.rb file
+   before { visit about_path }
+
+  #Test 4: About is mentioned on the page.
+  it { should have_content('About') }
+end
 
   describe "Contact page" do
-    
-    #This tells the tester what we are testing for
-    it "should have the content 'Contact'" do
-    	#This tells the test (Capybara) to visit the contact page in the static_pags folder
-      visit '/static_pages/contact'
-      #This is the test (Capybara) request
-      expect(page).to have_content('Contact')
-    end
+  #This tells the test (Capybara) to visit the contact page as described in the routes.rb file
+   before { visit contact_path }
+
+  #Test 5: Contact is mentioned on the page.
+  it { should have_content('Contact') }
   end
 end

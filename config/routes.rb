@@ -1,10 +1,14 @@
 MntrmeApp::Application.routes.draw do
-  resources :articles
+  get "users/new"
 
-  get "static_pages/home"
-  get "static_pages/help"
-  get "static_pages/about"
-  get "static_pages/contact"
+  # See Listing 5.25
+  root  'static_pages#home'
+  # See Listing 5.35
+  match '/usersignup', to: 'users#new', via: 'get'
+  # See Listing 5.24
+  match '/help', to: 'static_pages#help', via: 'get'
+  match '/about',   to: 'static_pages#about',   via: 'get'
+  match '/contact', to: 'static_pages#contact', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

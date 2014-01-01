@@ -3,6 +3,8 @@ ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.2'
+gem 'bootstrap-sass', '~> 3.0.3.0'
+
 gem 'pg', '0.17.1'
 gem 'unicorn'
 
