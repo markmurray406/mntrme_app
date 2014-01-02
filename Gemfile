@@ -4,6 +4,8 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.2'
 gem 'bootstrap-sass', '~> 3.0.3.0'
+# See Listing 6.21
+gem 'bcrypt-ruby', '3.1.2'
 
 gem 'pg', '0.17.1'
 gem 'unicorn'

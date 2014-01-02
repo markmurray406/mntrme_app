@@ -6,7 +6,7 @@ describe "User pages" do
   describe "signup page" do
     before { visit usersignup_path }
 
-    # Test Signup should appear on the page
+    # Test 1: Signup should appear on the page
     it { should have_content('Sign up') }
 
   end
