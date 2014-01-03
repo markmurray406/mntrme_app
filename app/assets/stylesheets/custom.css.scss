@@ -5,6 +5,14 @@
 $grayMediumLight: #4D4D4D;
 $grayDarker: #1f1f1f;
 
+/* See miscellaneous below and Listing 7.2 */
+/* mixin allows a group of CSS rules to be packaged up and used for multiple elements */
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /* universal */
 
 html {
@@ -112,4 +120,71 @@ footer {
       margin-left: 10px;
     }
   }
+}
+
+/* miscellaneous, see Listing 7.2 */
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  /* this is a mixin. It allows the above group of CSS rules to be packaged up and used for multiple elements */
+  @include box_sizing;
+}
+
+/* sidebar, see Listing 7.15 */
+
+aside {
+  section {
+    padding: 10px 0;
+    border-top: 1px solid $grayMediumLight;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+/* forms, See Listing 7.19 */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+/* See Listing 7.25 */
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
 }

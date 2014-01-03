@@ -1,5 +1,7 @@
 MntrmeApp::Application.routes.draw do
-  get "users/new"
+  # See Listing 7.3
+  resources :users
+  # get "users/new" is removed because resource: users includes the feature 
 
   # See Listing 5.25
   root  'static_pages#home'
