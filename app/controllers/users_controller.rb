@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     #@user = User.new(params[:user])    # Not the final implementation!
     @user = User.new(user_params) # See Listing 7.22
     if @user.save
+      # See Listing 8.27
+      sign_in @user
       # See Listing 7.28
       flash[:success] = "Welcome to Mntr Me!"
       # See Listing 7.26

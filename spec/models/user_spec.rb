@@ -20,6 +20,9 @@ describe User do
   # Test 11-12. Testing that password if present and matches the confirmed password before saving.
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  # Test 18 and 19, See Listing 8.15
+  it { should respond_to(:remember_token) }
+  it { should respond_to(:authenticate) }
 
   # Test 3: See Listing 6.8 This is a sanity check, verifying that the subject (@user) is initially valid:
   it { should be_valid }
@@ -139,5 +142,12 @@ describe User do
     	specify { expect(user_for_invalid_password).to be_false }
   	end
 	end
+
+  # Test 20, See Listing 8.17
+  describe "remember token" do
+    before { @user.save }
+    # Note the its method, see Listing 8.17
+    its(:remember_token) { should_not be_blank }
+  end
 
 end

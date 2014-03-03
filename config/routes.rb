@@ -1,12 +1,17 @@
 MntrmeApp::Application.routes.draw do
   # See Listing 7.3
   resources :users
+  # See Lisitng 8.2
+  resources :sessions, only: [:new, :create, :destroy]
   # get "users/new" is removed because resource: users includes the feature 
 
   # See Listing 5.25
   root  'static_pages#home'
   # See Listing 5.35
   match '/usersignup', to: 'users#new', via: 'get'
+  # See Listing 8.2
+  match '/signin',  to: 'sessions#new', via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
   # See Listing 5.24
   match '/help', to: 'static_pages#help', via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'

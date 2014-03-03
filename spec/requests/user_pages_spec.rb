@@ -41,7 +41,15 @@ describe "User pages" do
         # Test 4: Inserting valid data from above the number of users increases, See Listing 7.16
         expect { click_button submit }.to change(User, :count).by(1)
       end
+
+      # Test 5: Testing that newly signed-up users are also signed in, See Listing 8.26.
+      describe "after saving the user" do
+        before { click_button submit }
+        let(:user) { User.find_by(email: 'user@example.com') }
+
+        it { should have_link('Sign out') }
+        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+      end
     end
   end
-
 end
