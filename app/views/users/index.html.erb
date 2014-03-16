@@ -1,0 +1,17 @@
+<%# See Listing 9.24 %>
+<%# provide(:title, 'All users') %>
+<h1>All users</h1>
+
+<%# See Listing 9.33 %>
+<%= will_paginate %>
+
+<ul class="users">
+  <%# See Listing 9.37, this is a block, we change this so we can list the User object (@users) %>
+  <%# @users.each do |user| %>
+    <%#= render user %>
+  <%# end %>
+    <%= render @users %>
+</ul>
+
+<%# See Listing 9.33 %>
+<%= will_paginate %>

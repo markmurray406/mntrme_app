@@ -23,9 +23,23 @@ describe User do
   # Test 18 and 19, See Listing 8.15
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+  #Test X See Listing 9.38
+  it { should respond_to(:admin) }
 
   # Test 3: See Listing 6.8 This is a sanity check, verifying that the subject (@user) is initially valid:
   it { should be_valid }
+  #Test Y See Listing 9.38
+  it { should_not be_admin }
+
+  #Test Z See Listing 9.38
+  describe "with admin attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+    end
+
+    it { should be_admin }
+  end
 
   # Test 4: See Listing 6.8 before block to set the user’s name to an invalid (blank) value and then checks that the resulting user object is not valid.
   describe "when name is not present" do

@@ -6,6 +6,11 @@ gem 'rails', '4.0.2'
 gem 'bootstrap-sass', '~> 3.0.3.0'
 # See Listing 6.21
 gem 'bcrypt-ruby', '3.1.2'
+# See Listing 9.28
+gem 'faker', '1.1.2'
+# See Listing 9.30
+gem 'will_paginate', '3.0.4'
+gem 'bootstrap-will_paginate', '0.0.9'
 
 gem 'pg', '0.17.1'
 gem 'unicorn'
