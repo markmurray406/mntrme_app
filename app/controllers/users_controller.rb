@@ -15,8 +15,8 @@ class UsersController < ApplicationController
 
   def show
 	  @user = User.find(params[:id])
-    # See Listing 10.19
-    @occupations = @user.occupations.paginate(page: params[:page])
+    # See Listing 10.19. also added , :per_page => 1 to limit pagination to show 1 occupation per page
+    @occupations = @user.occupations.paginate(page: params[:page], :per_page => 1)
 	end
 
 	def new
