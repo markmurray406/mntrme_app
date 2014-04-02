@@ -1,13 +1,15 @@
 <%# See Listing 7.24 %>
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <div class="alert alert-error">
-      The form contains <%= pluralize(@user.errors.count, "error") %>.
+<%# if @user.errors.any? %>
+<%# See Listing 10.32, changing from user to object so we can include more objects (user. occupation etc) %>
+<% if object.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-error">
+        The form contains <%= pluralize(object.errors.count, "error") %>.
+      </div>
+      <ul>
+        <% object.errors.full_messages.each do |msg| %>
+            <li>* <%= msg %></li>
+        <% end %>
+      </ul>
     </div>
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li>* <%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
 <% end %>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  # Listing 9.12, 9.21 and 9.44
-  before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
+  # Listing 9.12, 9.21 and 9.44, See Listing 10.24 why this is hidden.
+  #before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   # Listing 9.14
   before_action :correct_user, only: [:edit, :update]
   # Listing 9.46
@@ -15,6 +15,8 @@ class UsersController < ApplicationController
 
   def show
 	  @user = User.find(params[:id])
+    # See Listing 10.19
+    @occupations = @user.occupations.paginate(page: params[:page])
 	end
 
 	def new

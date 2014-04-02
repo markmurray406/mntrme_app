@@ -25,6 +25,12 @@ describe User do
   it { should respond_to(:authenticate) }
   #Test X See Listing 9.38
   it { should respond_to(:admin) }
+  #Test X See Listing 10.6
+  it { should respond_to(:occupations) }
+
+  # Listing 10.35, test for the status feed.
+  it { should respond_to(:occupations) }
+  it { should respond_to(:feed) }
 
   # Test 3: See Listing 6.8 This is a sanity check, verifying that the subject (@user) is initially valid:
   it { should be_valid }
@@ -162,6 +168,45 @@ describe User do
     before { @user.save }
     # Note the its method, see Listing 8.17
     its(:remember_token) { should_not be_blank }
+  end
+
+  # Test 20, See Listing 10.10
+  describe "Occupation associations" do
+
+    before { @user.save }
+    let!(:older_occupation) do
+      FactoryGirl.create(:occupation, user: @user, created_at: 1.day.ago)
+    end
+    # Note: Ensure to use let! not let, as let by itself is lazy. 
+    let!(:newer_occupation) do
+      FactoryGirl.create(:occupation, user: @user, created_at: 1.hour.ago)
+    end
+
+    # This indicated that the new occupation should be before the older occpation
+    it "should have the right occupations in the right order" do
+      expect(@user.occupations.to_a).to eq [newer_occupation, older_occupation]
+    end
+
+    # See Listing 0.12, this tests that the microsposts cn be destroyed.
+    it "should destroy associated occupations" do
+      occupations = @user.occupations.to_a
+      @user.destroy
+      expect(occupations).not_to be_empty
+      occupations.each do |occupation|
+        expect(Occupation.where(id: occupation.id)).to be_empty
+      end
+    end
+
+    # See Listing 10.35 test for the status feed.
+    describe "status" do
+      let(:unfollowed_post) do
+        FactoryGirl.create(:occupation, user: FactoryGirl.create(:user))
+      end
+
+      its(:feed) { should include(newer_occupation) }
+      its(:feed) { should include(older_occupation) }
+      its(:feed) { should_not include(unfollowed_post) }
+    end
   end
 
 end

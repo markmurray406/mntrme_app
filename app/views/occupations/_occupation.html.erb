@@ -1,0 +1,14 @@
+<li>
+  <span class="content"><%= occupation.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(occupation.created_at) %> ago.
+  </span>
+
+ 	<%#= See Listing 10.43 %> 
+  <% if current_user?(occupation.user) %>
+    <%= link_to "delete", occupation, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: occupation.content %>
+  <% end %>
+
+</li>

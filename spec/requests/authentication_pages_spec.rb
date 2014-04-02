@@ -71,6 +71,20 @@ describe "Authentication" do
           # See Lisitng 9.16 for missing test
         #end
       end
+
+      # See Listing 10.23
+      describe "in the Occupations controller" do
+
+        describe "submitting to the create action" do
+          before { post occupations_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete occupation_path(FactoryGirl.create(:occupation)) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+      end
     # DON'T KNOW IF THIS END IS CORRECT  
     end  
 

@@ -53,12 +53,22 @@ describe "User pages" do
   describe "profile page" do
   	# See Listing 7.9. This creates a user based on the factories.rb file in the spec folder.
     let(:user) { FactoryGirl.create(:user) }
+    # See Listing 10.16. This creates an occupation based on the factories.rb file in the spec folder with the content Foo and Bar.
+    let!(:m1) { FactoryGirl.create(:occupation, user: user, content: "Foo") }
+    let!(:m2) { FactoryGirl.create(:occupation, user: user, content: "Bar") }
 
     # Replace with code to make a user variable
   	before { visit user_path(user) }
 
   	# Test 2: Test that the show page contains the users name.
   	it { should have_content(user.name) }
+
+    # See Listing 10.16. These are what we are testing for. m1 and m2 are the object listed above.
+    describe "occupations" do
+      it { should have_content(m1.content) }
+      it { should have_content(m2.content) }
+      it { should have_content(user.occupations.count) }
+    end
 	end
 
   describe "signup page" do

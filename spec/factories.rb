@@ -16,4 +16,9 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :occupation do
+    content "Lorem ipsum"
+    user
+  end
 end

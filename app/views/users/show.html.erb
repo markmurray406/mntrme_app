@@ -9,4 +9,15 @@
 			</h1>
     </section>
   </aside>
+	<%#= See Listing 10.17 %>
+   <div class="span8">
+    <% if @user.occupations.any? %>
+      <h3>Occupations (<%= @user.occupations.count %>)</h3>
+      <%#= This code, which uses the ordered list tag ol, is responsible for generating the list of occupations using the occupation partial%> 
+      <ol class="occupations">
+        <%= render @occupations %>
+      </ol>
+      <%= will_paginate @occupations %>
+    <% end %>
+  </div>
 </div>

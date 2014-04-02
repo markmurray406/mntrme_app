@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+# See Listing 10.8	
+has_many :occupations, dependent: :destroy
 # See Listing 6.20	
 before_save { self.email = email.downcase }
 # See Listing 8.18
@@ -25,6 +27,11 @@ validates :password, length: { minimum: 6 }
 	def User.encrypt(token)
 	  Digest::SHA1.hexdigest(token.to_s)
 	end
+
+	def feed
+    # This is preliminary. See "Following users" for the full implementation.
+    Occupation.where("user_id = ?", id)
+  end
 
 	private
 
