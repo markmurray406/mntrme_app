@@ -69,6 +69,13 @@ describe "User pages" do
       it { should have_content(m2.content) }
       it { should have_content(user.occupations.count) }
     end
+
+    # See Listing 10.16. These are what we are testing for. m1 and m2 are the object listed above.
+    describe "skills" do
+      it { should have_content(m1.content) }
+      it { should have_content(m2.content) }
+      it { should have_content(user.skills.count) }
+    end
 	end
 
   describe "signup page" do

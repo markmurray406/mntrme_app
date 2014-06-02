@@ -4,10 +4,20 @@
   <span class="user">
     <%= link_to feed_item.user.name, feed_item.user %>
   </span>
-  <span class="content"><%= feed_item.content %></span>
+  <span class="content">  Occupation id: <%= feed_item.id %></span>
+  <%#  <span class="content"><%= feed_item.content %><%# </span>%>
+
+  <%# See http://stackoverflow.com/questions/16386554/rails-links-with-model-object-path. This links to the occupation %>
+  <span class="content">
+    <%= link_to feed_item.content, feed_item %>
+  </span>
+
   <span class="timestamp">
     Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
   </span>
+
+  <%# Experiment, seeing if skills form appears in occupation feed. This does work but difficult to get occupation id %>
+  <%#<%= render 'shared/skill_form' %>
 
 	<%# See Listing 10.44 %>
   <% if current_user?(feed_item.user) %>

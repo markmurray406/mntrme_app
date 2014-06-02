@@ -40,4 +40,32 @@ describe Occupation do
     before { @occupation.content = "a" * 141 }
     it { should_not be_valid }
   end
+
+  # ADDED 02-MAY-14, SEE LISTING 10.10
+  describe "skill associations" do
+
+    before { @occupation.save }
+    let!(:older_skill) do
+      FactoryGirl.create(:skill, occupation: @occupation, created_at: 1.day.ago)
+    end
+    let!(:newer_skill) do
+      FactoryGirl.create(:skill, occupation: @occupation, created_at: 1.hour.ago)
+    end
+
+    # ADDED 02-MAY-14, SEE LISTING 10.10
+    it "should have the right skills in the right order" do
+      expect(@occupation.skills.to_a).to eq [newer_skill, older_skill]
+    end
+
+    # ADDED 02-MAY-14, SEE LISTING 10.12
+    it "should destroy associated skills" do
+      skills = @occupation.skills.to_a
+      @occupation.destroy
+      expect(skills).not_to be_empty
+      skills.each do |skill|
+        expect(Skill.where(id: skill.id)).to be_empty
+      end
+    end
+
+  end #END OF SKILL ASSOCIATIONS
 end

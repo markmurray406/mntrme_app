@@ -10,7 +10,7 @@
     </section>
   </aside>
 	<%#= See Listing 10.17 %>
-   <div class="span8">
+   <div class="span4">
     <% if @user.occupations.any? %>
       <h3>Occupations (<%= @user.occupations.count %>)</h3>
       <%#= This code, which uses the ordered list tag ol, is responsible for generating the list of occupations using the occupation partial%> 
@@ -20,4 +20,17 @@
       <%= will_paginate @occupations %>
     <% end %>
   </div>
+
+    <%#= See Listing 10.17 %>
+   <div class="span4">
+    <% if @user.skills.any? %>
+      <h3>Skills (<%= @user.skills.count %>)</h3>
+      <%#= This code, which uses the ordered list tag ol, is responsible for generating the list of occupations using the occupation partial%> 
+      <ol class="skills">
+        <%= render @skills %>
+      </ol>
+      <%= will_paginate @skills %>
+    <% end %>
+  </div>
+
 </div>

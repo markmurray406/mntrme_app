@@ -5,7 +5,9 @@ MntrmeApp::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   # get "users/new" is removed because resource: users includes the feature 
   # See Lisitng 10.22
-  resources :occupations, only: [:create, :destroy]
+  resources :occupations, only: [:show, :create, :destroy]
+  # See Lisitng 10.22
+  resources :skills, only: [:create, :destroy]
 
   # See Listing 5.25
   root  'static_pages#home'

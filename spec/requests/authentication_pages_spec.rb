@@ -85,8 +85,22 @@ describe "Authentication" do
           specify { expect(response).to redirect_to(signin_path) }
         end
       end
+
+      # See Listing 10.23
+      describe "in the Skills controller" do
+
+        describe "submitting to the create action" do
+          before { post skills_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete skill_path(FactoryGirl.create(:skill)) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+      end
     # DON'T KNOW IF THIS END IS CORRECT  
-    end  
+    end  # End of "for non-signed-in users"
 
     describe "in the Users controller" do
 
@@ -95,7 +109,7 @@ describe "Authentication" do
         #  it { should have_title('Sign in') }
         #end
 
-      describe "submitting to the update action" do
+      describe "submitting to the update action" do # This is failing
         # Access a controller action: by issuing the appropriate HTTP request directly, in this case using the patch method to issue a PATCH request:
         # This issues a PATCH request directly to /users/1, which gets routed to the update action of the Users controller (Table 7.1)
         before { put user_path(user) }
@@ -132,11 +146,13 @@ describe "Authentication" do
 
       before { sign_in non_admin }
 
-      describe "submitting a DELETE request to the Users#destroy action" do
+      describe "submitting a DELETE request to the Users#destroy action" do # This is failing
         before { delete user_path(user) }
-        specify { expect(response).to redirect_to(root_url) }
+        specify { expect(response).to redirect_to(root_url) } 
       end
     end
 
-  end
-end
+
+
+  end # End of suthorization
+end # End of Authentication

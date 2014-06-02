@@ -1,0 +1,15 @@
+<%#= See Listing 10.18 %>
+<li>
+	<span class="content">  Skill id: <%= skill.id %></span>
+  <span class="content"><%= skill.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(skill.created_at) %> ago.
+  </span>
+
+	<%#= See Listing 10.43 %>
+  <% if current_user?(skill.user) %>
+    <%= link_to "delete", skill, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: skill.content %>
+  <% end %>
+</li>

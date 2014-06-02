@@ -1,5 +1,12 @@
 <li>
-  <span class="content"><%= occupation.content %></span>
+	<span class="content">  Occupation id: <%= occupation.id %></span>
+  <%#=  <span class="content"><%= occupation.content %> <%#=  </span> %>
+
+  <span class="content">
+    <%= link_to occupation.content, occupation %>
+  </span>
+
+
   <span class="timestamp">
     Posted <%= time_ago_in_words(occupation.created_at) %> ago.
   </span>

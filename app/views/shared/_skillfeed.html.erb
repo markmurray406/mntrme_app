@@ -1,0 +1,7 @@
+<%# See Listing 10.39 %>
+<% if @skillfeed_items.any? %>
+  <ol class="skills">
+    <%= render partial: 'shared/skillfeed_item', collection: @skillfeed_items %>
+  </ol>
+  <%= will_paginate @skillfeed_items %>
+<% end %>

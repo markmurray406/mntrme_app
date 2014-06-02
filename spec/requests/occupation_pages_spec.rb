@@ -43,4 +43,22 @@ describe "Occupation pages" do
       end
     end
   end
+
+  # SEE LISTING 10.16
+  describe "occupation page" do
+    let(:occupation) { FactoryGirl.create(:occupation) }
+    let!(:s1) { FactoryGirl.create(:skill, occupation: occupation, content: "Foo") }
+    let!(:s2) { FactoryGirl.create(:skill, occupation: occupation, content: "Bar") }
+
+    before { visit occupation_path(occupation) }
+
+    it { should have_content(occupation.content) }
+
+    describe "skills" do
+      it { should have_content(s1.content) }
+      it { should have_content(s2.content) }
+      it { should have_content(occupation.skills.count) }
+    end
+  end
+
 end

@@ -47,9 +47,9 @@ describe "Home page" do
           expect(page).to have_selector("li##{item.id}", text: item.content)
         end
       end
-    end
+    end # End of "for signed-in users, see Listing 10.37"
 
-end
+end # End of Home page.
 
 describe "Help page" do
   #This tells the test (Capybara) to visit the help page as described in the routes.rb file

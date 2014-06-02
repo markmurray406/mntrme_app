@@ -17,8 +17,16 @@ FactoryGirl.define do
     end
   end
 
+  # See Listing 10.9
   factory :occupation do
     content "Lorem ipsum"
     user
+  end
+
+  # See Listing 10.9
+  factory :skill do
+    content "Lorem ipsum"
+    user
+    occupation # Add 02-May-14
   end
 end

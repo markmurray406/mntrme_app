@@ -27,9 +27,9 @@ describe User do
   it { should respond_to(:admin) }
   #Test X See Listing 10.6
   it { should respond_to(:occupations) }
+  it { should respond_to(:skills) }
 
   # Listing 10.35, test for the status feed.
-  it { should respond_to(:occupations) }
   it { should respond_to(:feed) }
 
   # Test 3: See Listing 6.8 This is a sanity check, verifying that the subject (@user) is initially valid:
@@ -207,6 +207,31 @@ describe User do
       its(:feed) { should include(older_occupation) }
       its(:feed) { should_not include(unfollowed_post) }
     end
-  end
+  end # End of Occupation associations
 
-end
+  # Test 20, See Listing 10.10
+  describe "Skill associations" do
+    before { @user.save }
+    let!(:older_skill) do
+      FactoryGirl.create(:skill, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_skill) do
+      FactoryGirl.create(:skill, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right skills in the right order" do
+      expect(@user.skills.to_a).to eq [newer_skill, older_skill]
+    end
+
+    # Test 20, See Listing 10.12
+    it "should destroy associated skills" do
+      skills = @user.skills.to_a
+      @user.destroy
+      expect(skills).not_to be_empty
+      skills.each do |skill|
+        expect(Skill.where(id: skill.id)).to be_empty
+      end
+    end
+  end # End of Skills Associations
+
+end # End of spec
