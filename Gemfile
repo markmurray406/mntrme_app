@@ -15,6 +15,10 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'pg', '0.17.1'
 gem 'unicorn'
 
+#Added 03-June-2014
+gem 'intercom-rails', '~> 0.2.24'
+
+
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
 end
