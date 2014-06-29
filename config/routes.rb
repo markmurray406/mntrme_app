@@ -7,7 +7,9 @@ MntrmeApp::Application.routes.draw do
   # See Lisitng 10.22
   resources :occupations, only: [:show, :create, :destroy]
   # See Lisitng 10.22
-  resources :skills, only: [:create, :destroy]
+  resources :skills, only: [:show, :create, :destroy]
+  # See Lisitng 10.22
+  resources :resources, only: [:create, :destroy]
 
   # See Listing 5.25
   root  'static_pages#home'

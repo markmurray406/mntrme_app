@@ -56,6 +56,12 @@ describe "User pages" do
     # See Listing 10.16. This creates an occupation based on the factories.rb file in the spec folder with the content Foo and Bar.
     let!(:m1) { FactoryGirl.create(:occupation, user: user, content: "Foo") }
     let!(:m2) { FactoryGirl.create(:occupation, user: user, content: "Bar") }
+    
+    let!(:m3) { FactoryGirl.create(:skill, user: user, content: "Foo") }
+    let!(:m4) { FactoryGirl.create(:skill, user: user, content: "Bar") }
+
+    let!(:m5) { FactoryGirl.create(:resource, user: user, content: "Foo") }
+    let!(:m6) { FactoryGirl.create(:resource, user: user, content: "Bar") }
 
     # Replace with code to make a user variable
   	before { visit user_path(user) }
@@ -72,8 +78,15 @@ describe "User pages" do
 
     # See Listing 10.16. These are what we are testing for. m1 and m2 are the object listed above.
     describe "skills" do
-      it { should have_content(m1.content) }
-      it { should have_content(m2.content) }
+      it { should have_content(m3.content) }
+      it { should have_content(m4.content) }
+      it { should have_content(user.skills.count) }
+    end
+
+    # See Listing 10.16. These are what we are testing for. m1 and m2 are the object listed above.
+    describe "resources" do
+      it { should have_content(m5.content) }
+      it { should have_content(m6.content) }
       it { should have_content(user.skills.count) }
     end
 	end

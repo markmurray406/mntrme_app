@@ -11,6 +11,10 @@
     Posted <%= time_ago_in_words(occupation.created_at) %> ago.
   </span>
 
+  <span class="content">
+    Started by:<%= link_to occupation.user.name, occupation.user %>
+  </span>
+
  	<%#= See Listing 10.43 %> 
   <% if current_user?(occupation.user) %>
     <%= link_to "delete", occupation, method: :delete,

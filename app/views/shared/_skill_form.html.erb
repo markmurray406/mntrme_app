@@ -1,6 +1,7 @@
 <%#= See Listing 10.30, if changing the submit button "Post" update the test suit listed in Listing 10.26%>
 <%= form_for(@skill) do |g| %>
 	<%= hidden_field_tag :occupation_id, value = @occupation.id %>
+	<%= hidden_field_tag :skill_id, value = @skill.id %>
   <%= render 'shared/error_messages', object: g.object %>
   <div class="field">
     <%= g.text_area :content, placeholder: "Add a skill..." %>

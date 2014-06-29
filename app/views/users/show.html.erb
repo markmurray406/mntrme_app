@@ -33,4 +33,16 @@
     <% end %>
   </div>
 
+    <%#= See Listing 10.17 %>
+   <div class="span4">
+    <% if @user.resources.any? %>
+      <h3>Resources (<%= @user.resources.count %>)</h3>
+      <%#= This code, which uses the ordered list tag ol, is responsible for generating the list of occupations using the occupation partial%> 
+      <ol class="resources">
+        <%= render @resources %>
+      </ol>
+      <%= will_paginate @resources %>
+    <% end %>
+  </div>
+
 </div>

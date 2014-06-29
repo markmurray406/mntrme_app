@@ -28,6 +28,7 @@ describe User do
   #Test X See Listing 10.6
   it { should respond_to(:occupations) }
   it { should respond_to(:skills) }
+  it { should respond_to(:resources) }
 
   # Listing 10.35, test for the status feed.
   it { should respond_to(:feed) }
@@ -233,5 +234,30 @@ describe User do
       end
     end
   end # End of Skills Associations
+
+  describe "resource associations" do
+
+    before { @user.save }
+    let!(:older_resource) do
+      FactoryGirl.create(:resource, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_resource) do
+      FactoryGirl.create(:resource, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right resources in the right order" do
+      expect(@user.resources.to_a).to eq [newer_resource, older_resource]
+    end
+
+    # See Listing 10.12
+    it "should destroy associated resources" do
+      resources = @user.resources.to_a
+      @user.destroy
+      expect(resources).not_to be_empty
+      resources.each do |resource|
+        expect(Resource.where(id: resource.id)).to be_empty
+      end
+    end
+  end  # End of Resources Associations
 
 end # End of spec

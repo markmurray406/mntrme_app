@@ -29,4 +29,11 @@ FactoryGirl.define do
     user
     occupation # Add 02-May-14
   end
+
+    # See Listing 10.9
+  factory :resource do
+    content "Lorem ipsum"
+    user
+    occupation # Add 02-May-14
+  end
 end

@@ -1,0 +1,11 @@
+Resource Form
+<%= form_for(@resource) do |f| %>
+	<%= hidden_field_tag :occupation_id, value = @skill.occupation.id %>
+	<%= hidden_field_tag :skill_id, value = @skill.id %>
+	<%= hidden_field_tag :resource_id, value = @resource.id %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Add a new resource..." %>
+  </div>
+  <%= f.submit "Add", class: "btn btn-large btn-primary" %>
+<% end %>

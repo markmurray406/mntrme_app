@@ -4,12 +4,9 @@
     <section>  
 			<h1>
 				<%#= See Listing 7.12 %>
-        <%= @occupation.content %>
-			  <%= gravatar_for @occupation.user %>
-			  <%= @occupation.user.name %>
-        <span>
-          <%= link_to "view my profile", @occupation.user %>
-        </span>
+        <%= @skill.content %>
+			  <%= gravatar_for @skill.user %>
+			  <%= @skill.user.name %>
 			</h1>
     </section>
   </aside>
@@ -17,14 +14,14 @@
    <div class="span4">
 
     <%#= Skills form%>
-    <p><%= render 'shared/skill_form' %></p>
+    <p><%= render 'shared/resource_form' %></p>
 
-    <% if @occupation.skills.any? %>
-      <h3>Skills (<%= @occupation.skills.count %>)</h3>
+    <% if @skill.resources.any? %>
+      <h3>Resourcess (<%= @skill.resources.count %>)</h3>
       <%#= This code, which uses the ordered list tag ol, is responsible for generating the list of occupations using the occupation partial%> 
-      <ol class="skills">
-        <%= render @skills %>
+      <ol class="resources">
+        <%= render @resources %>
       </ol>
-      <%= will_paginate @skills %>
+      <%= will_paginate @resources %>
     <% end %>
   </div>

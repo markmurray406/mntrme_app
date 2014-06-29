@@ -18,7 +18,9 @@ class UsersController < ApplicationController
     # See Listing 10.19. also added , :per_page => 1 to limit pagination to show 1 occupation per page
     @occupations = @user.occupations.paginate(page: params[:page], :per_page => 5)
     # See Listing 10.19. also added , :per_page => 1 to limit pagination to show 1 occupation per page
-    @skills = @user.skills.paginate(page: params[:page], :per_page => 1)
+    @skills = @user.skills.paginate(page: params[:page], :per_page => 5)
+    # See Listing 10.19. also added , :per_page => 1 to limit pagination to show 1 occupation per page
+    @resources = @user.resources.paginate(page: params[:page], :per_page => 5)
 	end
 
 	def new
@@ -36,7 +38,7 @@ class UsersController < ApplicationController
       # See Listing 7.28
       flash[:success] = "Welcome to Mntr Me!"
       # See Listing 7.26
-      redirect_to @user
+      redirect_to root_path
       # Handle a successful save.
     else
       render 'new'

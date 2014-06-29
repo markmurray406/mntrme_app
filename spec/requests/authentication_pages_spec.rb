@@ -84,7 +84,7 @@ describe "Authentication" do
           before { delete occupation_path(FactoryGirl.create(:occupation)) }
           specify { expect(response).to redirect_to(signin_path) }
         end
-      end
+      end # End of "in the Occupations controller" 
 
       # See Listing 10.23
       describe "in the Skills controller" do
@@ -98,7 +98,21 @@ describe "Authentication" do
           before { delete skill_path(FactoryGirl.create(:skill)) }
           specify { expect(response).to redirect_to(signin_path) }
         end
-      end
+      end # End of "in the Skills controller" 
+
+            # See Listing 10.23
+      describe "in the Resources controller" do
+
+        describe "submitting to the create action" do
+          before { post resources_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete resource_path(FactoryGirl.create(:resource)) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+      end # End of "in the Skills controller" 
     # DON'T KNOW IF THIS END IS CORRECT  
     end  # End of "for non-signed-in users"
 

@@ -1,6 +1,8 @@
 class Skill < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :occupation
+	# See Listing 10.13
+	has_many :resources, dependent: :destroy
 	# See Listing 10.11
 	default_scope -> { order('created_at DESC') }
 

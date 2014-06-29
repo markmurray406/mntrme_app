@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 # See Listing 10.8	
 has_many :occupations, dependent: :destroy
 has_many :skills, dependent: :destroy
+has_many :resources
 # See Listing 6.20	
 before_save { self.email = email.downcase }
 # See Listing 8.18

@@ -1,9 +1,17 @@
 <%#= See Listing 10.18 %>
 <li>
 	<span class="content">  Skill id: <%= skill.id %></span>
-  <span class="content"><%= skill.content %></span>
+
+  <span class="content">
+    <%= link_to skill.content, skill %>
+  </span>
+
   <span class="timestamp">
     Posted <%= time_ago_in_words(skill.created_at) %> ago.
+  </span>
+
+  <span class="content">
+    Started by:<%= link_to skill.user.name, skill.user %>
   </span>
 
 	<%#= See Listing 10.43 %>

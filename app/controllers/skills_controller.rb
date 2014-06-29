@@ -1,6 +1,13 @@
 class SkillsController < ApplicationController
   before_action :signed_in_user, only: [:create, :destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :correct_user, only: :destroy
+
+  # SEE LISTING 10.19, ADDED 02-MAY-14
+  def show
+    @skill = Skill.find(params[:id])
+    @resource = Resource.new
+    @resources = @skill.resources.paginate(page: params[:page])
+  end
 
   def create
     @occupation = Occupation.find(params[:occupation_id])
