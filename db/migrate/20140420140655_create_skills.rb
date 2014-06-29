@@ -8,6 +8,6 @@ class CreateSkills < ActiveRecord::Migration
       t.timestamps
     end
     # See Listing 10.1
-    add_index :skills, [:occupation_id, :created_at]
+    add_index :skills, [:user_id, :created_at]
   end
 end
