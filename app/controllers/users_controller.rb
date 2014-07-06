@@ -9,8 +9,13 @@ class UsersController < ApplicationController
   # See Lisiting 9.23
   def index
     #@users = User.all
+    # Simple Search Form. See http://railscasts.com/episodes/37-simple-search-form.
+    @users = User.paginate(:per_page => 5, :page => params[:page]).search(params[:search])
+
     # See Listing 9.34
-    @users = User.paginate(page: params[:page])
+    #@users = User.paginate(page: params[:page])
+
+    #@products = Product.search(params[:search]).paginate(:per_page => 5, :page => params[:page])
   end
 
   def show

@@ -36,6 +36,16 @@ validates :password, length: { minimum: 6 }
     Occupation.where("user_id = ?", id)
   end
 
+	# Simple Search Form. See http://railscasts.com/episodes/37-simple-search-form
+	def self.search(search)
+  	if search
+    	find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+  	else
+    	find(:all)
+  	end
+	end
+	
+	# End of Simple Serch Form.
 	private
 
 		def create_remember_token

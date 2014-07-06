@@ -11,4 +11,13 @@ class Occupation < ActiveRecord::Base
 	validates :content, presence: true, length: { maximum: 140 }
   validates :user_id, presence: true
 
+	# Simple Search Form. See http://railscasts.com/episodes/37-simple-search-form
+	def self.search(search)
+  	if search
+    	find(:all, :conditions => ['content LIKE ?', "%#{search}%"])
+  	else
+    	find(:all)
+  	end
+	end
+
 end

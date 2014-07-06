@@ -1,9 +1,8 @@
 <%# See Listing 9.24 %>
-<%# provide(:title, 'All users') %>
-<h1>All users</h1>
+<h1>All Occupations</h1>
 
 <%# Search Form. http://railscasts.com/episodes/37-simple-search-form%>
-<%= form_tag users_path, :method => 'get' do %>
+<%= form_tag occupations_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
@@ -13,12 +12,12 @@
 <%# See Listing 9.33 %>
 <%= will_paginate %>
 
-<ul class="users">
+<ul class="occupations">
   <%# See Listing 9.37, this is a block, we change this so we can list the User object (@users) %>
-  <%# @users.each do |user| %>
-    <%#= render user %>
+  <%# @occupations.each do |occupation| %>
+    <%#= render occupation %>
   <%# end %>
-    <%= render @users %>
+    <%= render @occupations %>
 </ul>
 
 <%# See Listing 9.33 %>

@@ -4,6 +4,12 @@ class OccupationsController < ApplicationController
   before_action :signed_in_user, only: [:create, :destroy]
   before_action :correct_user, only: :destroy
 
+  # See Lisiting 9.23
+  def index
+    # Simple Search Form. See http://railscasts.com/episodes/37-simple-search-form.
+    @occupations = Occupation.paginate(:per_page => 5, :page => params[:page]).search(params[:search])
+  end
+
   # SEE LISTING 10.19, ADDED 02-MAY-14
   def show
     @occupation = Occupation.find(params[:id])

@@ -25,6 +25,9 @@ module MntrmeApp
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # Added this line. 06-july-14. http://stackoverflow.com/questions/20361428/rails-i18n-validation-deprecation-warning
+    config.i18n.enforce_available_locales = true
+
     # Added to allow Bootstrap, see Listing 5.4.
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
   end
