@@ -26,7 +26,7 @@ module MntrmeApp
     # config.i18n.default_locale = :de
 
     # Added this line. 06-july-14. http://stackoverflow.com/questions/20361428/rails-i18n-validation-deprecation-warning
-    config.i18n.enforce_available_locales = true
+    config.i18n.enforce_available_locales = false
 
     # Added to allow Bootstrap, see Listing 5.4.
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
