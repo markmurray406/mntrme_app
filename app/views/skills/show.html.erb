@@ -14,7 +14,9 @@
    <div class="span4">
 
     <%#= Skills form%>
-    <p><%= render 'shared/resource_form' %></p>
+    <% if current_user.id == @skill.user_id %>
+      <p><%= render 'shared/resource_form' %></p>
+    <% end %>  
 
     <% if @skill.resources.any? %>
       <h3>Resourcess (<%= @skill.resources.count %>)</h3>

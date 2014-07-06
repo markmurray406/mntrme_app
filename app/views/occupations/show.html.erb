@@ -17,11 +17,13 @@
    <div class="span4">
 
     <%#= Skills form%>
-    <p><%= render 'shared/skill_form' %></p>
+    <% if current_user.id == @occupation.user_id %>
+      <p><%= render 'shared/skill_form' %></p>
+    <% end %>
 
-    <% if @occupation.skills.any? %>
-      <h3>Skills (<%= @occupation.skills.count %>)</h3>
-      <%#= This code, which uses the ordered list tag ol, is responsible for generating the list of occupations using the occupation partial%> 
+      <% if @occupation.skills.any? %>
+        <h3>Skills (<%= @occupation.skills.count %>)</h3>
+        <%#= This code, which uses the ordered list tag ol, is responsible for generating the list of occupations using the occupation partial%> 
       <ol class="skills">
         <%= render @skills %>
       </ol>
