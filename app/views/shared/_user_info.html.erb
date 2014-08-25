@@ -1,8 +1,10 @@
+<section id="left-sidebar">
+	<section>
 <%#= See Listing 10.30 %>
 <%= link_to gravatar_for(current_user, size: 52), current_user %>
-<h1>
+<h3>
   <%= current_user.name %>
-</h1>
+</h3>
 <span>
   <%= link_to "view my profile", current_user %>
 </span>
@@ -10,3 +12,6 @@
   <%= pluralize(current_user.occupations.count, "occupation") %>
   <%= pluralize(current_user.skills.count, "skill") %>
 </span>
+
+</section>
+</section>

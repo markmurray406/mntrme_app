@@ -1,36 +1,149 @@
 <%#= See Listing 10.28 %>
 <% if signed_in? %>
   <div class="row">
-    <aside class="span2">
-      <section>
         <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/occupation_form' %>
-        <%#= render 'shared/skill_form' %>
-      </section>
-    </aside>
-  </div>
 
   <%# See Listing 10.41 %>
-  <div class="span4">
+  <div class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
+    <section id="main-bar">
+    <section>
+        <h3>Add an Occupation</h3>
+        <%= render 'shared/occupation_form' %> 
+        <%#= render 'shared/skill_form' %>
+    </section>
     <h3>Occupation Feed</h3>
       <%= render 'shared/feed' %>
+    </section>
     </div>
   </div>
 
 <% else %>
 
-	<div class="center jumbotron">
-    <h1>Mntr Me</h1>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-heading">Welcome To Dialog!</div>
+                <div class="intro-lead-in">Making mentoring easier.</div>
+                <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+            </div>
+        </div>
+    </header>
 
-    <h2>
-        This is the home page for the Mntr Me app.
-    </h2>
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Problem</h2>
+                    <h3 class="section-subheading text-muted">Here are the problems we are trying to solve.</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">1. Experience.</h4>
+                    <p class="text-muted">Many companies require a minimum of 2 years experience for jobs. Internship are often the chosen routes. However most are unpaid postions. These positions are often unattainable due to lack of money available after graduation, nor do internships guarantee employment once the contract is finished.</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">2. Training and Acquirement Costs.</h4>
+                    <p class="text-muted">For companies, the cost to acquire and train new employees is often very high and time consuming. These costs are not only attributed to the new hires but also to exisitng employees. In a survey involving 10,000 particpants, the Robert Walters Employee Insights Survey 2013 revealed that 83pc of employees feel they would benefit from being involved in a mentoring programme. Yet only 29% of the particants current employers provided mentoring.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <%= link_to "Sign up now!", usersignup_path,
-                                class: "btn btn-large btn-primary" %>
-  </div>
+    <!-- Out Vision -->
+    <section id="portfolio" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Our Vision</h2>
+                    <h3 class="section-subheading text-muted">This is what we want to acheive.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/1.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="subheading">For Graduates</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">We want to help end youth unemployment. Our long-term aim is to help graduates get a relvant design job they enjoy within 3 months of graduating.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/2.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="subheading">For Designers</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">We want you to create amazing products and services! To do this we want to get you access to the best resources possible to help you develop your ideas quickly and effectively.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="img/about/3.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="subheading">For Companies</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">We want to see you succeed. We beleive the best way to do this is by hiring exceptional designers who continue to learn and consistency deliver products and services that change your customers lives for the better.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Join Us</h2>
+                    <h3 class="section-subheading text-muted">Get in contact with us about problems you are having so we can solve them.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row">
+                            <div class="col-md-6">
+                                
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
   <%#= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
 <% end %>

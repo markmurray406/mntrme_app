@@ -80,6 +80,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
+      # Added {:user_ids =>[]} to resolve #<ActiveRecord::Associations::CollectionProxy::ActiveRecord_Associations_CollectionProxy_User:0x007fa45dc513a0> problem
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
     end

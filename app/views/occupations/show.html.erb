@@ -13,6 +13,29 @@
 			</h1>
     </section>
   </aside>
+
+  <%#= People who want this Job %>
+  <!-- <h3>People who want this Job</h3>
+    <ul>
+      <% for occupation in @occupation.inverse_friends %>
+      <%#= <li><%=h @occupation.inverse_friends.name %>
+
+      <li><%=h @occupation.inverse_friends.name%></li>
+      <%#= <%=h @occupation.user.name Doing this just added the occupation creators name to the list. %>
+    <% end %>
+    </ul>
+    -->
+
+    <ul>
+      <% for friendship in @occupation.friendships %>
+        <%#= http://stackoverflow.com/questions/296747/whats-the-h-mean-in-h %>
+        <%#= Note user.content refers to occupation.content %>
+      <li>
+        <%=h friendship.user.name %>
+      </li>
+      <% end %>
+    </ul>
+
 	<%#= See Listing 10.17 %>
    <div class="span4">
 

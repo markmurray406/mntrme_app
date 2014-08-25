@@ -15,6 +15,13 @@ class OccupationsController < ApplicationController
     @occupation = Occupation.find(params[:id])
     @skill = Skill.new
     @skills = @occupation.skills.paginate(page: params[:page])
+    # See Listing 10.19. also added , :per_page => 1 to limit pagination to show 1 occupation per page
+    #@user = User.new
+    @users = @occupation.inverse_friends 
+    # Added this 26th July
+    #@friend = @occupation.friendships.find_by(:occupation_id => params[:occupation_id])
+    #@friend = Occupation.joins('INNER JOIN "friendships" ON "occupations"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = 1')   
+    #@friend = @occupation.friendships.where(:occupation_id == :friend_id)
   end
 
   def create

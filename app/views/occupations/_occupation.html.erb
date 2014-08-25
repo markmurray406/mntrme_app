@@ -6,6 +6,10 @@
     <%= link_to occupation.content, occupation %>
   </span>
 
+   <%#=  Add an occupation  </span> %>
+  <span class="content">
+    <%= link_to "I want this job!", friendships_path(:friend_id => occupation), :method => :post %>
+  </span>
 
   <span class="timestamp">
     Posted <%= time_ago_in_words(occupation.created_at) %> ago.

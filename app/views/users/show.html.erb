@@ -1,22 +1,35 @@
 <%#= Side bar for the image, see Listing 7.14 %>
 <div class="row">
-  <aside class="span4">
+  <div class="col-xs-4">
     <section>  
 			<h1>
 				<%#= See Listing 7.12 %>
-			  <%= gravatar_for @user %>
-			  <%= @user.name %>
+			  <p><%= gravatar_for @user %></p>
+			  <p><%= @user.name %></p>
 			</h1>
     </section>
-  </aside>
+
+  <h3>Jobs I Want</h3>
+    <ul>
+      <% for friendship in @user.friendships %>
+        <%#= http://stackoverflow.com/questions/296747/whats-the-h-mean-in-h %>
+        <%#= Note user.content refers to occupation.content %>
+      <li>
+        <%=h friendship.friend.content%> by <%=h friendship.friend.user.name%> 
+        (<%= link_to "remove", friendship, :method => :delete %>)
+      </li>
+      <% end %>
+    </ul>
+   </div> 
+
 	<%#= See Listing 10.17 %>
-   <div class="span4">
+  <div class="col-xs-4">
     <% if @user.occupations.any? %>
       <h3>Occupations (<%= @user.occupations.count %>)</h3>
       <%#= This code, which uses the ordered list tag ol, is responsible for generating the list of occupations using the occupation partial%> 
-      <ol class="occupations">
+      <li class="occupations">
         <%= render @occupations %>
-      </ol>
+      </li>
       <%= will_paginate @occupations %>
     <% end %>
   </div>

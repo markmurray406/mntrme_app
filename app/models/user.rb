@@ -3,6 +3,15 @@ class User < ActiveRecord::Base
 has_many :occupations, dependent: :destroy
 has_many :skills, dependent: :destroy
 has_many :resources
+
+# See 8 minutes, http://railscasts.com/episodes/163-self-referential-association
+has_many :friendships
+has_many :friends, :through => :friendships
+
+# Showing People who want the occupation
+has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+
 # See Listing 6.20	
 before_save { self.email = email.downcase }
 # See Listing 8.18

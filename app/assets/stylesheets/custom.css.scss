@@ -21,7 +21,7 @@ html {
 
 body {
 	/* Adds padding at the top of the page, this will need to be increased is the navbar height is increased*/
-  padding-top: 60px;
+  padding-top: 50px;
 }
 
 section {
@@ -34,24 +34,14 @@ textarea {
 
 /* typography */
 
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
-h1 {
-  font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: left;
-}
-
-h2 {
-  font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  color: $grayMediumLight;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
 }
 
 p {
@@ -92,35 +82,6 @@ header {
   text-decoration: none;
 }
 */
-
-/* footer */
-
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  /* border-top" 1px solid creates a line above the footer*/
-  border-top: 1px solid $grayMediumLight;
-  color: $grayMediumLight;
-  a {
-    color: $grayMediumLight;
-    /*
-    &:hover {
-      color: $grayDarker;
-    }
-    */
-  }
-  small {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 10px;
-    }
-  }
-}
 
 /* miscellaneous, see Listing 7.2 */
 .debug_dump {
@@ -253,3 +214,78 @@ aside {
     margin-bottom: 5px;
   }
 }
+
+/* ====================================================
+   FIXED LEFT SIDEBAR (LOGO + MENU)
+   ==================================================== */
+
+#left-sidebar {
+    display:block;
+    background: rgba(30,0,0,0.29);
+    padding: 3%; 
+}
+
+    @media (min-width: 768px) {
+        #left-sidebar {
+            /* any change has to be replicated in #footer below */
+            height:100%;
+            position: fixed;
+            top:50px;
+            width: 13%;  
+            max-width:150px;
+            min-width:205px; 
+           
+        }
+    }
+    @media (min-width: 992px) {
+        #left-sidebar {
+            /* any change has to be replicated in #footer below */
+            height:100%;
+            position: fixed;
+            width: 13%; 
+            max-width:250px;
+            min-width:205px; 
+        }
+    }
+    @media (min-width: 1200px) {
+
+    }
+
+/* ====================================================
+   END OF FIXED LEFT SIDEBAR (LOGO + MENU)
+   ==================================================== */
+
+
+/* ====================================================
+   MAIN
+   ==================================================== */
+
+#main-bar {
+    display:block;
+    padding: 3%; 
+}
+
+    @media (min-width: 768px) {
+        #main-bar {
+            /* any change has to be replicated in #footer below */
+            width: 13%;  
+            max-width:300px;
+            min-width:410px; 
+           
+        }
+    }
+    @media (min-width: 992px) {
+        #main-bar{
+            /* any change has to be replicated in #footer below */
+            width: 13%; 
+            max-width:500px;
+            min-width:500px; 
+        }
+    }
+    @media (min-width: 1200px) {
+
+    }
+
+/* ====================================================
+   END OF MAIN 
+   ==================================================== */

@@ -1,4 +1,6 @@
 MntrmeApp::Application.routes.draw do
+  resources :friendships
+
   # See Listing 7.3
   resources :users
   # See Lisitng 8.2
