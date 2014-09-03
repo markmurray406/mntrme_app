@@ -283,6 +283,7 @@ header .intro-text {
 
 header .intro-text .intro-lead-in {
     margin-bottom: 25px;
+    width: 100%;
     font-family: Helvetica,Arial,sans-serif;
     font-size: 22px;
     line-height: 22px;

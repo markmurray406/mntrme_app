@@ -5,11 +5,13 @@
   <%#= These next 3 lines prevents cross-site request forgery (CSRF), a type of malicious web attack. %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%#= Prevents attacks, see Chapter 3 of Hartl book %>
   <%= csrf_meta_tags %>
 
   <%#= Added from Bootstrap Templates, 25-Aug-14 %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <%#= for Mobile First, http://getbootstrap.com/css/%>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -41,8 +43,8 @@
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
-			<%#= yiled is responsible for inserting the contents of each page into the layout, see Listing 3.26 %>
-			<%= yield %>
+			<%#= yield is responsible for inserting the contents of each page into the layout, see Listing 3.26 %>
+			 <%= yield %>
       <%#= header %>
       <%= render 'layouts/footer' %>
       <%#= See Listing 7.1 %>
