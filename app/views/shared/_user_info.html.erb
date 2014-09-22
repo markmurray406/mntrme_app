@@ -1,16 +1,22 @@
 <section id="left-sidebar">
 	<section>
-<%#= See Listing 10.30 %>
-<%= link_to gravatar_for(current_user, size: 52), current_user %>
-<h3>
-  <%= current_user.name %>
-</h3>
+	<%#= See Listing 10.30 %>
+	<section>
+		<%= link_to gravatar_for(current_user, size: 52), current_user %>
+	</section>
+
+	<section>
+	<h3>
+  	<%= current_user.name %>
+	</h3>
+</section>
 <span>
   <%= link_to "view my profile", current_user %>
 </span>
 <span>
-  <%= pluralize(current_user.occupations.count, "occupation") %>
-  <%= pluralize(current_user.skills.count, "skill") %>
+  <p><%= pluralize(current_user.occupations.count, "occupation") %></p>
+  <p><%= pluralize(current_user.skills.count, "skill") %></p>
+   <p><%= pluralize(current_user.resources.count, "resource") %></p>
 </span>
 
 </section>

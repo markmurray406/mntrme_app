@@ -13,11 +13,11 @@ describe "Occupation pages" do
     describe "with invalid information" do
 
       it "should not create a occupation" do
-        expect { click_button "Post" }.not_to change(Occupation, :count)
+        expect { click_button "Add" }.not_to change(Occupation, :count)
       end
 
       describe "error messages" do
-        before { click_button "Post" }
+        before { click_button "Add" }
         it { should have_content('error') }
       end
     end
@@ -26,7 +26,7 @@ describe "Occupation pages" do
 
       before { fill_in 'occupation_content', with: "Lorem ipsum" }
       it "should create a occupation" do
-        expect { click_button "Post" }.to change(Occupation, :count).by(1)
+        expect { click_button "Add" }.to change(Occupation, :count).by(1)
       end
     end
   end

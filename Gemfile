@@ -18,6 +18,9 @@ gem 'unicorn'
 #Added 03-June-2014
 gem 'intercom-rails', '~> 0.2.24'
 
+#Added 09-Sept-2014.
+gem 'safe_attributes'
+
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

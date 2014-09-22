@@ -8,7 +8,8 @@ namespace :db do
                          email: "example@railstutorial.org",
                          password: "foobar",
                          password_confirmation: "foobar",
-                         admin: true)
+                         admin: true,
+                         company: true)
 
     #User.create!(name: "Example User",
     #             email: "example@railstutorial.org",
@@ -31,8 +32,6 @@ namespace :db do
       users.each { |user| user.occupations.create!(content: content) }
       users.each { |user| user.skills.create!(content: content) }
       users.each { |user| user.resources.create!(content: content) }
-      # ADDED 02-MAY-14
-      #occupations.each { |occupation| occupation.skills.create!(content: content) }
     end
   end
 end

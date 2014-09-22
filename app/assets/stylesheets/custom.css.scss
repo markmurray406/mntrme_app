@@ -222,7 +222,7 @@ aside {
 #left-sidebar {
     display:block;
     background: rgba(30,0,0,0.29);
-    padding: 3%; 
+    padding: 30px; 
 }
 
     @media (min-width: 768px) {
@@ -262,14 +262,15 @@ aside {
 
 #main-bar {
     display:block;
-    padding: 3%; 
+    padding: 30px; 
 }
 
     @media (min-width: 768px) {
         #main-bar {
             /* any change has to be replicated in #footer below */
-            width: 13%;  
-            max-width:300px;
+            /*width: 150px;*/  
+            padding-left: 250px; 
+            max-width:768px;
             min-width:410px; 
            
         }
@@ -277,8 +278,9 @@ aside {
     @media (min-width: 992px) {
         #main-bar{
             /* any change has to be replicated in #footer below */
-            width: 13%; 
-            max-width:500px;
+            /* width: 150px;*/ 
+            padding-left: 250px; 
+            max-width:992px;
             min-width:500px; 
         }
     }
@@ -288,4 +290,43 @@ aside {
 
 /* ====================================================
    END OF MAIN 
+   ==================================================== */
+
+
+/* ====================================================
+   SPLIT-MAIN
+   ==================================================== */
+
+#split-main-bar {
+    display:block;
+    background: rgba(30,0,0,0.29);
+    padding: 30px; 
+}
+
+    @media (min-width: 768px) {
+        #split-main-bar {
+            /* any change has to be replicated in #footer below */
+            /*width: 150px;*/  
+            padding-left: 15px; 
+            width: 20%;  
+            max-width:300px;
+            min-width:300px;            
+        }
+    }
+    @media (min-width: 992px) {
+        #split-main-bar{
+            /* any change has to be replicated in #footer below */
+            /* width: 150px;*/ 
+            padding-left: 15px; 
+            width: 20%; 
+            max-width:400px;
+            min-width:300px; 
+        }
+    }
+    @media (min-width: 1200px) {
+
+    }
+
+/* ====================================================
+   END OF SPLIT-MAIN
    ==================================================== */

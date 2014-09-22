@@ -1,29 +1,55 @@
 <%#= Side bar for the image, see Listing 7.14 %>
-<div class="row">
-  <div class="col-xs-4">
-    <section>  
-			<h1>
+    <section id="left-sidebar">
+      <section>  
 				<%#= See Listing 7.12 %>
-			  <p><%= gravatar_for @user %></p>
-			  <p><%= @user.name %></p>
-			</h1>
-    </section>
+          <section>
+			     <p><%= gravatar_for @user %></p>
+          </section> 
+          <section>
+			     <h3><%= @user.name %></h3>
+          </section> 
 
+          <%#= Shows if the company has created Occupation, Skills, Resources %>
+          <% if current_user.company? == true%>
+            <section>
+              <span>
+                <p><%= pluralize(current_user.occupations.count, "occupation") %></p>
+                <p><%= pluralize(current_user.skills.count, "skill") %></p>
+                <p><%= pluralize(current_user.resources.count, "resource") %></p>
+              </span>
+            </section>
+          <% end %>
+          <%#= End of Shows if the company has created Occupation, Skills, Resources %>             
+
+      </section>
+    </section>  
+
+  <section id="main-bar">
   <h3>Jobs I Want</h3>
-    <ul>
+    <% if @user.friendships.any? %>
       <% for friendship in @user.friendships %>
         <%#= http://stackoverflow.com/questions/296747/whats-the-h-mean-in-h %>
         <%#= Note user.content refers to occupation.content %>
       <li>
-        <%=h friendship.friend.content%> by <%=h friendship.friend.user.name%> 
+        <section>
+           <p><%=h gravatar_for friendship.friend.user %></p>
+        <%= link_to friendship.friend.content, friendship.friend, :method => :get %>
+        with
+        <%= link_to friendship.friend.user.name, friendship.friend.user, :method => :get %> 
+        </section> 
+        <% if current_user.id == friendship.user.id %>
         (<%= link_to "remove", friendship, :method => :delete %>)
+        <% end %>
       </li>
       <% end %>
-    </ul>
-   </div> 
+
+      <% else %>
+        <h4>You havn't added an Occupation yet.</h4>
+        <%= link_to "Find an Occupation", occupations_path, class: "btn btn-info"%>
+    <% end %>  
+
 
 	<%#= See Listing 10.17 %>
-  <div class="col-xs-4">
     <% if @user.occupations.any? %>
       <h3>Occupations (<%= @user.occupations.count %>)</h3>
       <%#= This code, which uses the ordered list tag ol, is responsible for generating the list of occupations using the occupation partial%> 
@@ -32,30 +58,6 @@
       </li>
       <%= will_paginate @occupations %>
     <% end %>
-  </div>
 
-    <%#= See Listing 10.17 %>
-   <div class="span4">
-    <% if @user.skills.any? %>
-      <h3>Skills (<%= @user.skills.count %>)</h3>
-      <%#= This code, which uses the ordered list tag ol, is responsible for generating the list of occupations using the occupation partial%> 
-      <ol class="skills">
-        <%= render @skills %>
-      </ol>
-      <%= will_paginate @skills %>
-    <% end %>
-  </div>
+  </section>
 
-    <%#= See Listing 10.17 %>
-   <div class="span4">
-    <% if @user.resources.any? %>
-      <h3>Resources (<%= @user.resources.count %>)</h3>
-      <%#= This code, which uses the ordered list tag ol, is responsible for generating the list of occupations using the occupation partial%> 
-      <ol class="resources">
-        <%= render @resources %>
-      </ol>
-      <%= will_paginate @resources %>
-    <% end %>
-  </div>
-
-</div>

@@ -13,8 +13,8 @@ describe "Home page" do
   #This tells the test (Capybara) to visit the home page as described in the routes.rb file
    before { visit root_path }
 
-  #Test 1: Mntr Me is mentioned on the page, # See Listing 5.39
-  let(:heading)    { 'Mntr Me' }
+  #Test 1: Dialog is mentioned on the page, # See Listing 5.39
+  let(:heading)    { 'Dialog' }
   it_should_behave_like "all static pages"
 
   #Test 2: Mntr Me shows in the tab of a browser.

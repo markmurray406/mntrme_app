@@ -1,47 +1,3 @@
-<!-- 
-<header class="navbar navbar-fixed-top">
-<%#= If you want a dark header use
-<header class="navbar navbar-fixed-top navbar-inverse"> %>
-  <div class="navbar-inner">
-    <div class="container">
-      <%#= Note id: "logo" links to tge logo class in the custom.css.scss file %>
-      <%= link_to "Mntr Me", root_path, id: "logo" %>
-          
-      <%#= Links, See Listing 8.24 %>
-      <nav>
-        <%#=  <ul class="nav pull-right"> %>
-        <%#=  The above navbar was showing links vertically, this had to change to the below %>
-        <ul class="nav pull-right navbar-nav">
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Help", help_path %></li>
-          <% if signed_in? %>
-            <%#= Links, See Listing 9.27 %>
-            <li><%= link_to "Users", users_path %></li>
-            <li><%= link_to "Occupations", occupations_path %></li>
-            <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Account <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Profile", current_user %></li>
-                <%#=See Listing 9.7. for settings path%>
-                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "Sign out", signout_path, method: "delete" %>
-                </li>
-              </ul>
-            </li>
-          <% else %>
-            <li><%= link_to "Sign in", signin_path %></li>
-          <% end %>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</header>
--->
-
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
@@ -59,7 +15,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><%= link_to "Home", root_path %></li>
-                    <li><%= link_to "Help", help_path %></li>
+                    
                   <% if signed_in? %>
                   <%#= Links, See Listing 9.27 %>
                      <li><%= link_to "Users", users_path %></li>

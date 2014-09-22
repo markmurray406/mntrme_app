@@ -1,18 +1,42 @@
-<%#= Side bar for the image, see Listing 7.14 %>
-<div class="row">
-  <aside class="span4">
-    <section>  
-			<h1>
-				<%#= See Listing 7.12 %>
-        <%= @skill.content %>
-			  <%= gravatar_for @skill.user %>
-			  <%= @skill.user.name %>
-			</h1>
-    </section>
-  </aside>
-	<%#= See Listing 10.17 %>
-   <div class="span4">
+<!--====================================================
+SIDE BAR
+==================================================== -->
+<section>  
+  <section id="left-sidebar">
+    <%#= See Listing 7.12 %>
+    <%#= Side bar for the image, see Listing 7.14 %>
+    <h3>Skills for <%= @skill.occupation.content %> </h3>
+    <%#= See Listing 7.12 %>
+    <h4>Skill: <%= @skill.content %></h4>
 
+    <span class="content">
+      <%= link_to "I want this job!", friendships_path(:friend_id => @skill.occupation), :method => :post %>
+    </span>
+
+    <p><%= pluralize(@skill.occupation.friendships.count, "other " 'person' " wants this job") %></p>
+
+  <%#= See Listing 10.17 %>
+   <%#=  Add a skill  </span> %>
+
+    <h3>Added by:</h3>
+      <section><%= gravatar_for @skill.user %></section>
+        <h4><%= @skill.user.name %></h4>
+        <span>
+          <%= link_to "view my profile", @skill.user %>
+        </span>
+  </section>
+</section>
+<!--====================================================
+END OF SIDE BAR
+==================================================== -->   
+
+<!--====================================================
+MAIN BAR
+==================================================== -->
+<section id="main-bar">
+  <!--====================================================
+  RESOURCES
+  ==================================================== -->   
     <%#= Skills form%>
     <% if current_user.id == @skill.user_id %>
       <p><%= render 'shared/resource_form' %></p>
@@ -26,4 +50,10 @@
       </ol>
       <%= will_paginate @resources %>
     <% end %>
-  </div>
+  <!--====================================================
+  END OF RESOURCES
+  ==================================================== -->   
+</section>  
+<!--====================================================
+END OF MAIN BAR
+==================================================== --> 

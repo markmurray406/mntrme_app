@@ -25,6 +25,8 @@ describe User do
   it { should respond_to(:authenticate) }
   #Test X See Listing 9.38
   it { should respond_to(:admin) }
+  it { should respond_to(:company) }
+
   #Test X See Listing 10.6
   it { should respond_to(:occupations) }
   it { should respond_to(:skills) }
@@ -37,15 +39,18 @@ describe User do
   it { should be_valid }
   #Test Y See Listing 9.38
   it { should_not be_admin }
+  it { should_not be_company }
 
   #Test Z See Listing 9.38
   describe "with admin attribute set to 'true'" do
     before do
       @user.save!
       @user.toggle!(:admin)
+      @user.toggle!(:company)
     end
 
     it { should be_admin }
+    it { should be_company }
   end
 
   # Test 4: See Listing 6.8 before block to set the user’s name to an invalid (blank) value and then checks that the resulting user object is not valid.

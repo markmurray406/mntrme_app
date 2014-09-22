@@ -2,11 +2,11 @@ class User < ActiveRecord::Base
 # See Listing 10.8	
 has_many :occupations, dependent: :destroy
 has_many :skills, dependent: :destroy
-has_many :resources
+has_many :resources, dependent: :destroy
 
 # See 8 minutes, http://railscasts.com/episodes/163-self-referential-association
-has_many :friendships
-has_many :friends, :through => :friendships
+has_many :friendships, dependent: :destroy
+has_many :friends, :through => :friendships, dependent: :destroy
 
 # Showing People who want the occupation
 has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"

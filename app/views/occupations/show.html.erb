@@ -1,55 +1,81 @@
+<!--====================================================
+SIDE BAR
+==================================================== -->
 <%#= Side bar for the image, see Listing 7.14 %>
-<div class="row">
-  <aside class="span4">
-    <section>  
-			<h1>
-				<%#= See Listing 7.12 %>
-        <%= @occupation.content %>
-			  <%= gravatar_for @occupation.user %>
-			  <%= @occupation.user.name %>
+<section>  
+  <section id="left-sidebar">
+		<%#= See Listing 7.12 %>
+    <h3>Occupation:</h3>
+    <h4><%= @occupation.content %></h4>
+
+
+   <%#=  Add an occupation  </span> %>
+      <span class="content">
+        <%= link_to "I want this job!", friendships_path(:friend_id => @occupation), :method => :post %>
+      </span>
+
+    <p><%= pluralize(@occupation.friendships.count, "other " 'person' " wants this job") %></p>
+
+    <h3>Added by:</h3>
+			<section><%= gravatar_for @occupation.user %></section>
+			  <h4><%= @occupation.user.name %></h4>
         <span>
           <%= link_to "view my profile", @occupation.user %>
         </span>
-			</h1>
-    </section>
-  </aside>
+  </section>
+</section>
+<!--====================================================
+END OF SIDE BAR
+==================================================== -->    
 
-  <%#= People who want this Job %>
-  <!-- <h3>People who want this Job</h3>
-    <ul>
-      <% for occupation in @occupation.inverse_friends %>
-      <%#= <li><%=h @occupation.inverse_friends.name %>
-
-      <li><%=h @occupation.inverse_friends.name%></li>
-      <%#= <%=h @occupation.user.name Doing this just added the occupation creators name to the list. %>
-    <% end %>
-    </ul>
-    -->
-
-    <ul>
-      <% for friendship in @occupation.friendships %>
-        <%#= http://stackoverflow.com/questions/296747/whats-the-h-mean-in-h %>
-        <%#= Note user.content refers to occupation.content %>
-      <li>
-        <%=h friendship.user.name %>
-      </li>
-      <% end %>
-    </ul>
-
-	<%#= See Listing 10.17 %>
-   <div class="span4">
-
+<!--====================================================
+MAIN BAR
+==================================================== -->
+  
+  <section id="main-bar">
+  <!--====================================================
+  SKILLS
+  ==================================================== -->   
+  <%#= See Listing 10.17 %>
     <%#= Skills form%>
+    <h3>Skills</h3>
+    <h3>Add a Skill for: <%= @occupation.content %> </h3>
     <% if current_user.id == @occupation.user_id %>
       <p><%= render 'shared/skill_form' %></p>
     <% end %>
 
-      <% if @occupation.skills.any? %>
-        <h3>Skills (<%= @occupation.skills.count %>)</h3>
+    <% if @occupation.skills.any? %>
+      <h3>Skills (<%= @occupation.skills.count %>)</h3>
         <%#= This code, which uses the ordered list tag ol, is responsible for generating the list of occupations using the occupation partial%> 
       <ol class="skills">
         <%= render @skills %>
       </ol>
       <%= will_paginate @skills %>
-    <% end %>
-  </div>
+  <% end %>
+  <!--====================================================
+  END OF SKILLS
+  ==================================================== -->   
+    
+  <!--====================================================
+  PEOPLE WHO WANT THIS JOB
+  ==================================================== -->  
+    <h3>People who want this job</h3>
+      <p><%= pluralize(@occupation.friendships.count, 'person') %></p>
+      <% for friendship in @occupation.friendships %>
+        <%#= http://stackoverflow.com/questions/296747/whats-the-h-mean-in-h %>
+        <%#= Note user.content refers to occupation.content %>
+        <li>
+          <section>
+            <p><%=h gravatar_for friendship.user %></p>
+            <%= link_to friendship.user.name, friendship.user, :method => :get %>
+          </section>
+        </li>
+      <% end %>
+  <!--====================================================
+  END OF PEOPLE WHO WANT THIS JOB
+  ==================================================== -->  
+
+  </section>  
+<!--====================================================
+END OF MAIN BAR
+==================================================== -->

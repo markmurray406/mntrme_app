@@ -5,8 +5,8 @@ class Occupation < ActiveRecord::Base
 	has_many :skills, dependent: :destroy
 
 	# See 8 minutes, http://railscasts.com/episodes/163-self-referential-association
-	has_many :friendships
-	has_many :friends, :through => :friendships
+	has_many :friendships, dependent: :destroy
+	has_many :friends, :through => :friendships, dependent: :destroy
 	# SHowing people who want this Occupation
 	has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 	#has_many :inverse_friends, :through => :inverse_friendships, :source => :user
