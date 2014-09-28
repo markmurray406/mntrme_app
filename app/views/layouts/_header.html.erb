@@ -14,6 +14,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    
+                  <% if signed_in? %>
+                    <li><%= current_user.name %></li>
+                  <% end %> 
+
                     <li><%= link_to "Home", root_path %></li>
                     
                   <% if signed_in? %>
@@ -30,12 +35,26 @@
                     <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                     <li class="divider"></li>
                     <li>
+                      <!-- Option 1: 
                       <%= link_to "Sign out", signout_path, method: "delete" %>
+                      -->
+
+                      <!-- Option 2: -->
+                      <%= link_to "Sign out", signout_path, id: "sign_out" %>
                     </li>
                   </ul>
             </li>
           <% else %>
-            <li><%= link_to "Sign in", signin_path %></li>
+            <li>
+              <!-- Option 1: 
+              <%#= link_to "Sign in", signin_path %>
+              -->
+
+              <!-- Option 2: -->
+              <%#= Login with Google Header %>   
+                  <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+              <%#= End of Login with Google Header %>
+            </li>
           <% end %>
                 </ul>
             </div>

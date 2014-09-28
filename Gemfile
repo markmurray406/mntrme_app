@@ -21,6 +21,9 @@ gem 'intercom-rails', '~> 0.2.24'
 #Added 09-Sept-2014.
 gem 'safe_attributes'
 
+#Added 24-Sept-2014. Google Auth
+gem "omniauth-google-oauth2", "~> 0.2.1" 
+
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

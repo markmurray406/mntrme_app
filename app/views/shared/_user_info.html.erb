@@ -2,7 +2,9 @@
 	<section>
 	<%#= See Listing 10.30 %>
 	<section>
-		<%= link_to gravatar_for(current_user, size: 52), current_user %>
+		<%= image_tag(current_user.image)%>
+
+		<%#= link_to gravatar_for(current_user, size: 52), current_user %>
 	</section>
 
 	<section>

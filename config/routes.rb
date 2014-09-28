@@ -13,13 +13,21 @@ MntrmeApp::Application.routes.draw do
   # See Lisitng 10.22
   resources :resources, only: [:create, :destroy]
 
+  # Google OAuth http://richonrails.com/articles/google-authentication-in-ruby-on-rails
+  # The auth/:provider/callback route actually handles the callback from Google back to omniauth. 
+  get 'auth/:provider/callback', to: 'sessions#create'
+  # The auth/failure route is used when an error occurs
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
   # See Listing 5.25
   root  'static_pages#home'
   # See Listing 5.35
   match '/usersignup', to: 'users#new', via: 'get'
   # See Listing 8.2
   match '/signin',  to: 'sessions#new', via: 'get'
-  match '/signout', to: 'sessions#destroy', via: 'delete'
+  # Hid this in exchange for above
+  #match '/signout', to: 'sessions#destroy', via: 'delete'
   
   # See Listing 5.24
   #match '/help', to: 'static_pages#help', via: 'get'
