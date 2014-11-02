@@ -1,0 +1,18 @@
+<%#= Adding form for user sigup, see Listing 7.17 %>
+<%#=  a block with one variable, which we’ve called f for “form %>
+
+ <div class="form-box">
+<%= form_for(@user) do |f| %>
+
+  <%#= Adding form for user sigup, see Listing 7.23 and 10.33%>
+  <%#= Note: shared/ directory is for partials expected to be used in views across multiple controllers. %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+			<%#= Adding form for user sigup, see Listing 7.17 %>
+      <%#=http://stackoverflow.com/questions/18840947/how-to-get-class-form-control-in-input-fields-by-default-rails-form-helper %>
+      <%= f.text_field :email, class: "form-control", placeholder: "Enter your email" %> 
+     
+  <%= f.submit "Get started", class: "page-scroll btn btn-xl" %>
+<% end %>
+</div>
+

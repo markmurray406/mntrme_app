@@ -3,8 +3,11 @@
         <div class="container">
             <div class="intro-text">
                 <div class="intro-heading">Dialog</div>
-                <div class="intro-lead-in">Making mentoring easier.</div>
+                <div class="intro-lead-in">Making recruitment easier.</div>
+                <%= render 'shared/user_form' %>
+                <!-- 
                 <a href="#Get Started" class="page-scroll btn btn-xl">Sign up</a>
+                -->  
                 <!--  <a href="#Problem we solve" class="page-scroll btn btn-xl">Tell Me More</a> -->  
             </div>
          </div>   
@@ -14,26 +17,34 @@
         <div class="container">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">Problems we want to solve.</h2>
-                <h3 class="section-subheading text-muted">Why we want to help.</h3>
+                <h3 class="section-subheading text-muted">Recent studies found: </h3>
             </div>
         </div>
 
          <!-- Problem we solve-->
         <div class="col-sm-6">
-                <h4 class="subheading">Graduates.</h4>
+                    <h4 class="subheading">For Companies.</h4>
                 
                     <p class="text-muted">
-                    <p>26% of Accenture survey repsondants are making less than $19,000. 28% of the repsondants will graduate with more than $30,000 in debt.</p>
-                    <p>46 percent of 2012/2013 grads report having a full-time job</p></p>
-                    <p>46 percent of 2012/2013 grads working today report that they are underemployed (meaning they are working in a job that does not require their college degree).</p> 
+                    <p><b>1. Current Skills Gap</b></p>
+                    <p>In Ireland, there are currently 7,000 immediate vacancies in the I.T. sector. 75% of vacancies in the I.T. sector are for entry and compent level.</p> 
+
+                    <p><b>2. Time and Cost to recruit and provide training</b></p>
+                    <p>An average cost of recruiting, hiring and training a new employee can be close to $4,000.</p>
         </div>
 
         <div class="col-sm-6">
-                    <h4 class="subheading">Employers.</h4>
+                <h4 class="subheading">For Employees.</h4>
                 
-                    <p class="text-muted">2012 survey, currently 7,000 immediate vacancies.</p> 
-                        <p>75% of vacancies in the I.T. sector are for entry and compent level.</p>
-                        <p>80% of 2014 college grads expect their employer to provide a formal training program in their first job.</p>
+                    <p class="text-muted">    
+                   <p><b>1. Too few jobs for graduates.</b></p>
+                   <p>Only 46 percent of 2012/2013 grads report having a full-time job.</p>
+
+                    <p><b>2. Little on-job training.</b></p> 
+                    <p>76% beleive it is essential. 61% received less than a weeks worth of training in 2013.</p>
+
+                    <p><b>3. Gap in expectations.</b></p> 
+                    <p>65% of survey participants don’t understand what employers are looking for in terms of relavent skills. </p>
         </div>
     </section> 
 
@@ -42,9 +53,9 @@
         <div class="container">
             <div class="col-lg-8 text-center">
                 <h2 class="section-heading">What is Dialog?</h2>
-                <h3 class="section-subheading text-muted">Dialog is a quick and easy way for students and companies to communicate.</h3>
+                <h3 class="section-subheading text-muted">Dialog is an easy way for companies and students to communicate, so companies can de-risk their hiring process.</h3>
 
-                <p>We provide a simple interface to ensure that design and engineering students are learning skills that companies need; whilst students and graduates have the safety net of college, social welfare or a part-time job.</p>
+                <p>We provide a simple interface to help your future employees learn skills that you need; whilst students and graduates have the safety net of college, social welfare or a part-time job.</p>
             </div>
         </div>
     </section>       
@@ -59,23 +70,22 @@
         </div>
 
         <div class="col-xs-12 col-sm-4">
-            <h4 class="subheading">For Students and Graduates.</h4>
+            <h4 class="subheading">For Start-ups and SME's.</h4>  
                 <p class="text-muted">
-                    <li>Access skills and resources from profesionals you want to work with.</li>
-                    <li>Build familarity with potential employers months before you need a job</li>
-                    <li>Keep up to date to what your future employers want.</li>
-                </p>  
-        </div>
-
-        <div class="col-xs-12 col-sm-4">
-            <h4 class="subheading">For Companies.</h4>  
-                <p class="text-muted">
-                    <li>Free database of people who want to work with you.</li>
-                    <li>Mentor potential employees specific skills without spending hours providing feedback.</li>
-                    <li>Save weeks in recruiting.</li>
+                    <li>Build a pipeline of people who want to work with you.</li>
+                    <li>Train future employees specific skills before you hire them.</li>
+                    <li>Minimise risks when recruiting and fast track your return on investment.</li>
                 </p>    
         </div>
 
+        <div class="col-xs-12 col-sm-4">
+            <h4 class="subheading">For Students and Graduates.</h4>
+                <p class="text-muted">
+                    <li>Access skills and resources from profesionals you want to work with.</li>
+                    <li>Build familarity with potential employers months before you need a job.</li>
+                    <li>Keep up to date with skills your future employers want.</li>
+                </p>  
+        </div>
 
         <div class="col-xs-12 col-sm-4">
             <h4 class="subheading">For Education Providers.</h4>
@@ -93,8 +103,11 @@
         <div class="container">
             <div class="col-lg-12 text-center">
                 <div class="section-heading" >
-                    <h2>Get Started.</h2>
-                    <a href="#Get Started" class="page-scroll btn btn-xl">Sign up</a>
+                    <h2>Want to learn more?</h2>
+                    <!-- 
+                        <a href="#Get Started" class="page-scroll btn btn-xl">Sign up</a>
+                    -->
+                    <%= render 'shared/user_form' %>
                 </div>    
             </div>
         </div>

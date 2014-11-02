@@ -1,5 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
+    # Added to allow sign up on the landing page using email only, 02-Nov-14
+    @user = User.new
+    
     if signed_in?
 		  # See Listing 10.31
   	 @occupation = current_user.occupations.build 
