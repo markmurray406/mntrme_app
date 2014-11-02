@@ -3,7 +3,8 @@
       <section>  
 				<%#= See Listing 7.12 %>
           <section>
-			     <p><%= gravatar_for @user %></p>
+			     <%#= <p><%= gravatar_for @user %>
+           <p><%= image_tag(@user.image)%></p>
           </section> 
           <section>
 			     <h3><%= @user.name %></h3>
@@ -17,6 +18,22 @@
                 <p><%= pluralize(current_user.skills.count, "skill") %></p>
                 <p><%= pluralize(current_user.resources.count, "resource") %></p>
               </span>
+
+              <%#= LINKEDIN SHARE BUTTON %>
+              <section>
+                <script src="//platform.linkedin.com/in.js" type="text/javascript">
+                  lang: en_US
+                </script>
+                <script type="IN/Share"></script>
+              </section>
+              <%#= END OF LINKEDIN SHARE BUTTON %>
+
+              <%#= FACEBOOK SHARE BUTTON, SEE ALSO APPLICATIONS.HTML.ERB %>
+              <section>
+                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/"></div>
+              </section>  
+              <%#= END OF FACEBOOK SHARE BUTTON %>  
+
             </section>
           <% end %>
           <%#= End of Shows if the company has created Occupation, Skills, Resources %>             
@@ -30,17 +47,19 @@
       <% for friendship in @user.friendships %>
         <%#= http://stackoverflow.com/questions/296747/whats-the-h-mean-in-h %>
         <%#= Note user.content refers to occupation.content %>
-      <li>
         <section>
-           <p><%=h gravatar_for friendship.friend.user %></p>
-        <%= link_to friendship.friend.content, friendship.friend, :method => :get %>
-        with
-        <%= link_to friendship.friend.user.name, friendship.friend.user, :method => :get %> 
+            <!-- Profile Image -->
+           <p><%=h image_tag (friendship.friend.user.image) %></p>
+           <!-- <p><%=h gravatar_for friendship.friend.user %></p> -->
+          <%= link_to friendship.friend.content, friendship.friend, :method => :get %>
+            with
+          <%= link_to friendship.friend.user.name, friendship.friend.user, :method => :get %> 
         </section> 
+        
         <% if current_user.id == friendship.user.id %>
-        (<%= link_to "remove", friendship, :method => :delete %>)
+          (<%= link_to "remove", friendship, :method => :delete %>)
         <% end %>
-      </li>
+
       <% end %>
 
       <% else %>

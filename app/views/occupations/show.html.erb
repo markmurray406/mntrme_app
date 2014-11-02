@@ -17,8 +17,12 @@ SIDE BAR
     <p><%= pluralize(@occupation.friendships.count, "other " 'person' " wants this job") %></p>
 
     <h3>Added by:</h3>
-			<section><%= gravatar_for @occupation.user %></section>
-			  <h4><%= @occupation.user.name %></h4>
+			<section>
+        <!-- Profile Image -->
+        <p><%= link_to image_tag (@occupation.user.image) %></p>
+        <!--  <%= gravatar_for @occupation.user %> -->
+      </section>
+			  <h4><%= link_to @occupation.user.name %></h4>
         <span>
           <%= link_to "view my profile", @occupation.user %>
         </span>
@@ -39,7 +43,7 @@ MAIN BAR
   <%#= See Listing 10.17 %>
     <%#= Skills form%>
     <h3>Skills</h3>
-    <h3>Add a Skill for: <%= @occupation.content %> </h3>
+    <h3>Add a Skill for: <%= link_to @occupation.content %> </h3>
     <% if current_user.id == @occupation.user_id %>
       <p><%= render 'shared/skill_form' %></p>
     <% end %>
@@ -64,12 +68,11 @@ MAIN BAR
       <% for friendship in @occupation.friendships %>
         <%#= http://stackoverflow.com/questions/296747/whats-the-h-mean-in-h %>
         <%#= Note user.content refers to occupation.content %>
-        <li>
           <section>
-            <p><%=h gravatar_for friendship.user %></p>
+            <p><%= link_to image_tag (friendship.user.image) %></p>
+            <!-- <p><%=h gravatar_for friendship.user %></p> -->   
             <%= link_to friendship.user.name, friendship.user, :method => :get %>
           </section>
-        </li>
       <% end %>
   <!--====================================================
   END OF PEOPLE WHO WANT THIS JOB

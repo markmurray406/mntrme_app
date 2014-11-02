@@ -42,9 +42,9 @@
                             <% for friendship in current_user.friendships %>
                             <%#= http://stackoverflow.com/questions/296747/whats-the-h-mean-in-h %>
                             <%#= Note user.content refers to occupation.content %>
-                        <li>
                                 <section>
-                                    <p><%=h gravatar_for friendship.friend.user %></p>
+                                    <p><%= link_to image_tag(friendship.friend.user.image)%></p>
+                                    <!-- <p><%=h gravatar_for friendship.friend.user %></p> -->
                                     <%= link_to friendship.friend.content, friendship.friend, :method => :get %>
                                     with
                                     <%= link_to friendship.friend.user.name, friendship.friend.user, :method => :get %> 
@@ -52,7 +52,6 @@
                                 <% if current_user.id == friendship.user.id %>
                                     (<%= link_to "remove", friendship, :method => :delete %>)
                                 <% end %>
-                            </li>
                         <% end %>
 
                         <% else %>

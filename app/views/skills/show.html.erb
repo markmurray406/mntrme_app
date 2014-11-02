@@ -19,8 +19,11 @@ SIDE BAR
    <%#=  Add a skill  </span> %>
 
     <h3>Added by:</h3>
-      <section><%= gravatar_for @skill.user %></section>
-        <h4><%= @skill.user.name %></h4>
+      <section>
+        <%= link_to image_tag (@skill.user.image) %>
+        <!-- <%= gravatar_for @skill.user %> -->
+      </section>
+        <h4><%= link_to @skill.user.name %></h4>
         <span>
           <%= link_to "view my profile", @skill.user %>
         </span>
@@ -43,7 +46,7 @@ MAIN BAR
     <% end %>  
 
     <% if @skill.resources.any? %>
-      <h3>Resourcess (<%= @skill.resources.count %>)</h3>
+      <h3>Resources (<%= @skill.resources.count %>)</h3>
       <%#= This code, which uses the ordered list tag ol, is responsible for generating the list of occupations using the occupation partial%> 
       <ol class="resources">
         <%= render @resources %>
